@@ -7,7 +7,7 @@ interface LatestProps {
 
 export default function Timeline({ timeline }: LatestProps): JSX.Element {
   return (
-    <div className="relative p-20 max-h-[94vh] overflow-y-auto space-y-8 scrollbar-none">
+    <div className="relative p-20 max-h-[99vh] overflow-y-auto space-y-8 scrollbar-none">
       <div style={{ paddingTop: "10px" }} /> {/* Espacio vacío arriba */}
 
       {timeline.map((event, index) => (

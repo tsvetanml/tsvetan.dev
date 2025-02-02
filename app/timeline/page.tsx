@@ -48,10 +48,8 @@ export default function Page() {
   ];
 
   return (
-    <div className="items-center justify-center max-w-4xl mx-auto mt-[3vh]">
-
+    <div className="items-center justify-center max-w-4xl mx-auto">
       <Timeline timeline={timeline} />
-
     </div>
   );
 }
