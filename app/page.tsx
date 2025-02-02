@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { AiOutlineCopy, AiOutlineEdit, AiOutlineGithub } from "react-icons/ai";
+import { AiOutlineGithub } from "react-icons/ai";
+import { FaClock, FaFolderOpen } from "react-icons/fa";
 
 export enum NavigationItemType {
   ACTION = 'action',
@@ -11,13 +12,13 @@ const actions: any = [
   {
     type: NavigationItemType.LINK,
     href: '/timeline',
-    icon: <AiOutlineEdit className="mb-1 mr-2" />,
+    icon: <FaClock className="mb-1 mr-2" />,
     text: 'Timeline',
   },
   {
     type: NavigationItemType.LINK,
     href: '/projects',
-    icon: <AiOutlineCopy className="mb-1 mr-2" />,
+    icon: <FaFolderOpen className="mb-1 mr-2" />,
     text: 'Projects',
   },
   {
