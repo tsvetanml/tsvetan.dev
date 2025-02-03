@@ -1,13 +1,15 @@
 "use client";
 
+import { DictionaryInterface } from "@/app/[lang]/dictionaries";
 import { NavigationItemType } from "@/app/types";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { AiOutlineGithub } from "react-icons/ai";
 import { FaClock, FaFolderOpen } from "react-icons/fa";
-
-export default function Welcome() {
-  const description = `I am a full-stack developer specializing in web and mobile applications.`;
+//set type any for lang
+export default function Welcome({ lang }: { lang: DictionaryInterface }): JSX.Element {
+  console.log(lang);
+  const description = lang.welcome.description;
   const actions = [
     {
       type: NavigationItemType.LINK,

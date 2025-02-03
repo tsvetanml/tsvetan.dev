@@ -1,14 +1,29 @@
 import 'server-only';
 
-interface DictionaryModule {
-  default: Record<string, string>;
+export interface DictionaryInterface {
+
+  title: string;
+  description: string;
+  links: {
+    timeline: string;
+    projects: string;
+    contact: string;
+    blog: string;
+  };
+  welcome: {
+    presentation: string;
+    a: string;
+    developer: string;
+    description: string;
+  };
+
 }
 
-type Locale = 'en' | 'es';
+export type Locale = 'en' | 'es';
 
-const dictionaries: Record<Locale, () => Promise<DictionaryModule>> = {
-  en: () => import('../dictionaries/en.json').then((module) => module as DictionaryModule),
-  es: () => import('../dictionaries/es.json').then((module) => module as DictionaryModule),
+const dictionaries = {
+  en: () => import('../dictionaries/en.json').then((module) => module.default),
+  es: () => import('../dictionaries/es.json').then((module) => module.default),
 }
 
-export const getDictionary = async (locale: Locale): Promise<Record<string, string>> => (await dictionaries[locale]()).default;
+export const getDictionary = async (locale: Locale) => dictionaries[locale]
