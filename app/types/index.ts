@@ -4,3 +4,9 @@ interface Timeline {
   description: string;
   icon: any;
 }
+
+export enum NavigationItemType {
+  ACTION = "action",
+  DIVIDER = "divider",
+  LINK = "link",
+}
