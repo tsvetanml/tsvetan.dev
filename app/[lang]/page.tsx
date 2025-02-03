@@ -1,5 +1,6 @@
-import LatestPosts from "./components/latestsPosts";
-import Welcome from "./components/welcome";
+import LatestPosts from "../components/latestsPosts";
+import Welcome from "../components/welcome";
+
 export default function Home() {
 
   return (

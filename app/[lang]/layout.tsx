@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import AnimatedBackground from "./components/animatedBackground";
-import DropdownMenu from "./components/dropdownMenu";
-import "./globals.css";
+import AnimatedBackground from "../components/animatedBackground";
+import DropdownMenu from "../components/dropdownMenu";
+import LanguageSwitcher from "../components/languageSwitcher";
+import "../globals.css";
+;
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,6 +21,7 @@ export default function RootLayout({
         <AnimatedBackground />
         <div className="relative z-10">
           <DropdownMenu />
+          <LanguageSwitcher />
           {children}
         </div>
         {/* </div> */}

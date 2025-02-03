@@ -1,7 +1,8 @@
 
+import Timeline from "@/app/components/timeline";
 import { FaAngular, FaBaby, FaBuilding, FaCode, FaCss3Alt, FaDatabase, FaHtml5, FaJsSquare, FaLaptop, FaLaptopCode, FaNodeJs, FaPlane, FaReact } from "react-icons/fa";
-import { SiDotnet, SiMongodb, SiNextdotjs, SiPostgresql, SiTailwindcss } from "react-icons/si";
-import Timeline from "../components/timeline";
+import { SiMongodb, SiNextdotjs, SiPostgresql, SiTailwindcss } from "react-icons/si";
+
 export default function Page() {
 
   const timeline = [
@@ -56,7 +57,7 @@ export default function Page() {
       details: [
         {
           text: "Technologies:",
-          icons: [<FaReact />, <FaNodeJs />, <SiMongodb />],
+          icons: [<FaAngular />, <FaNodeJs />, <FaDatabase />, <SiMongodb />],
         },
         { text: "Contributed to large-scale fleet management software 🚚" },
       ],
@@ -69,7 +70,7 @@ export default function Page() {
       details: [
         {
           text: "Technologies:",
-          icons: [<FaAngular />, <SiDotnet />, <FaDatabase />],
+          icons: [<FaReact />, <SiNextdotjs />, <FaDatabase />, <SiMongodb />, <SiTailwindcss />, <SiPostgresql />],
         },
         { text: "Optimized internal systems for business processes 📊" },
       ],
@@ -82,7 +83,7 @@ export default function Page() {
       details: [
         {
           text: "Technologies:",
-          icons: [<SiNextdotjs />, <SiTailwindcss />, <SiPostgresql />],
+          icons: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare />, <SiTailwindcss />],
         },
         { text: "Developing scalable SaaS solutions for industrial automation ⚙️" },
       ],
@@ -91,9 +92,16 @@ export default function Page() {
 
 
   return (
-    <div className="items-center justify-center max-w-4xl mx-auto">
+    <div className="relative h-screen max-w-6xl mx-auto overflow-y-auto scrollbar-none">
+      {/* Efecto de ocultamiento sutil arriba */}
+      <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
+
+      {/* Efecto de ocultamiento sutil abajo */}
+      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
+
       <Timeline timeline={timeline} />
     </div>
+
   );
 }
 
