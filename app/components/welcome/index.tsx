@@ -82,9 +82,16 @@ export default function Welcome() {
           key="links"
           className="flex flex-col sm:flex-row items-center justify-center my-8 sm:space-x-4 space-y-4 sm:space-y-0 w-full mt-8 sm:mt-4"
           variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
           {actions.map((action, index) => (
-            <motion.div key={index} variants={itemVariants}>
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.03, y: -4 }} // Efecto de elevación y ligera ampliación
+              transition={{ type: "spring", stiffness: 250, damping: 20 }} // Animación suave y natural
+            >
               <Link
                 className="inline-flex items-center bg-blue-600 bg-opacity-80 text-white font-semibold justify-center backdrop-filter backdrop-blur-sm rounded-lg cursor-pointer px-8 py-2 border-2 border-blue-900 border-opacity-60"
                 href={action.href}
@@ -97,6 +104,8 @@ export default function Welcome() {
             </motion.div>
           ))}
         </motion.div>
+
+
       </motion.div>
     </motion.div>
   );
