@@ -1,31 +1,34 @@
+import { match } from "@formatjs/intl-localematcher";
+import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
-
 const locales = ["es", "en"];
 
-function getLocale(req: Request) {
-  let locale = "en";
-  const acceptLanguage = req.headers.get("Accept-Language");
-  if (acceptLanguage) {
-    let [language] = acceptLanguage.split(",");
-    locale = language.split("-")[0];
-  }
-  return locale;
+function getLocale(req: NextRequest) {
+  let headers = { "accept-language": "en-US,en;q=0.5" };
+  let languages = new Negotiator({ headers }).languages();
+
+  let defaultLocale = "es";
+
+  match(languages, locales, defaultLocale);
 }
 
-export function middleware(req: NextRequest, res: Response, next: () => void) {
-  const { pathname } = req.nextUrl;
-  console.log(pathname);
+export function middleware(request: NextRequest) {
+  // Check if there is any supported locale in the pathname
+  const { pathname } = request.nextUrl;
   const pathnameHasLocale = locales.some(
-    (locale) =>
-      pathname.startsWith(`/${locale}`) || pathname === `/${locale}/${pathname}`
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
-  if (pathnameHasLocale) {
-    return;
-  }
-  const locale = getLocale(req);
-  req.nextUrl.pathname = `/${locale}${pathname}`;
-  return NextResponse.redirect(req.nextUrl);
+
+  if (pathnameHasLocale) return;
+
+  // Redirect if there is no locale
+  const locale = getLocale(request);
+  request.nextUrl.pathname = `/${locale}${pathname}`;
+  // e.g. incoming request is /products
+  // The new URL is now /en-US/products
+  return NextResponse.redirect(request.nextUrl);
 }
+
 export const config = {
   matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
 };
