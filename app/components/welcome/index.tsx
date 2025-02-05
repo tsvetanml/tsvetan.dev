@@ -1,15 +1,17 @@
 "use client";
 
-import { DictionaryInterface } from "@/app/[lang]/dictionaries";
+import { Dictionary } from "@/app/[lang]/dictionaries";
 import { NavigationItemType } from "@/app/types";
+import Memoji from "@/public/memoji.png";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { AiOutlineGithub } from "react-icons/ai";
 import { FaClock, FaFolderOpen } from "react-icons/fa";
-//set type any for lang
-export default function Welcome({ lang }: { lang: DictionaryInterface }): JSX.Element {
-  console.log(lang);
-  const description = lang.welcome.description;
+
+export default function Welcome({ dict }: { dict: Dictionary }): JSX.Element {
+  console.log(dict);
+  const description = dict.welcome.description;
   const actions = [
     {
       type: NavigationItemType.LINK,
@@ -53,10 +55,11 @@ export default function Welcome({ lang }: { lang: DictionaryInterface }): JSX.El
       animate="visible"
     >
       <motion.div
-        className="justify-center flex items-center"
+        className="justify-center w-52 h-52 flex items-center"
         variants={itemVariants}
       >
-        <img src="/memoji.png" className="w-52 h-52 rounded-full" alt="Memoji" />
+
+        <Image src={Memoji} className="rounded-full" alt="Memoji" />
       </motion.div>
 
       <motion.div
