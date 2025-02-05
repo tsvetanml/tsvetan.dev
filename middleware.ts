@@ -1,34 +1,50 @@
 import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { NextRequest, NextResponse } from "next/server";
+
 const locales = ["es", "en"];
+const defaultLocale = "es";
 
+// ✅ Función para obtener el idioma del navegador
 function getLocale(req: NextRequest) {
-  let headers = { "accept-language": "en-US,en;q=0.5" };
-  let languages = new Negotiator({ headers }).languages();
+  const negotiatorHeaders: { [key: string]: string } = {};
 
-  let defaultLocale = "es";
+  // Extraer encabezados del request
+  req.headers.forEach((value, key) => {
+    negotiatorHeaders[key] = value;
+  });
 
-  match(languages, locales, defaultLocale);
+  const languages = new Negotiator({ headers: negotiatorHeaders }).languages();
+
+  // Devolver el idioma detectado o el predeterminado
+  return match(languages, locales, defaultLocale);
 }
 
 export function middleware(request: NextRequest) {
-  // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
+  console.log("pathname", pathname);
+
+  // ✅ Verifica si ya hay un locale en la URL
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
+  console.log("aaa", pathnameHasLocale);
 
-  if (pathnameHasLocale) return;
+  if (pathnameHasLocale) {
+    return NextResponse.next(); // Si ya hay un locale, continúa sin redirigir
+  }
 
-  // Redirect if there is no locale
+  // 🌍 Detectar el locale del usuario
   const locale = getLocale(request);
+  console.log("Detected locale:", locale);
+
+  // 🔄 Redirigir a la URL con el locale correcto
   request.nextUrl.pathname = `/${locale}${pathname}`;
-  // e.g. incoming request is /products
-  // The new URL is now /en-US/products
   return NextResponse.redirect(request.nextUrl);
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|.*\\.png$).*)"],
+  matcher: [
+    "/((?!api|_next/|favicon.ico|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico|css|js|woff|woff2|ttf|eot|otf|map)).*)",
+  ],
 };
