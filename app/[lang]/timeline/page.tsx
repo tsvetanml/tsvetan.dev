@@ -10,7 +10,7 @@ export default function Page() {
       year: "1999",
       title: "Born in Blagoevgrad, Bulgaria",
       description: "Started my journey in the world 🌍 from Blagoevgrad, Bulgaria.",
-      icon: <FaBaby />,
+      icon: <FaBaby key={"FaBaby"} />,
       details: [
         { text: "First words were 'Hello World!' (probably not true) 🤖" },
         { text: "Expert in crying and napping 😴" },
@@ -20,7 +20,7 @@ export default function Page() {
       year: "2005",
       title: "Moved to Tarragona, Spain",
       description: "Relocated to Spain ✈️ and began adapting to a new culture and environment.",
-      icon: <FaPlane />,
+      icon: <FaPlane key={"FaPlane"} />,
       details: [
         { text: "Learned to speak Spanish 🇪🇸 and Catalan 🗣️" },
         { text: "Became a master of playground diplomacy 🤝" },
@@ -30,7 +30,7 @@ export default function Page() {
       year: "2015",
       title: "Started Vocational Training in IT",
       description: "Began studying Microcomputer Systems and Networks 💻 at Institut Campclar.",
-      icon: <FaLaptopCode />,
+      icon: <FaLaptopCode key={"FaLaptopCode"} />,
       details: [
         { text: "Introduced to programming and networking 🌐" },
         { text: "First experience with Linux 🐧 and basic server setups" },
@@ -44,7 +44,7 @@ export default function Page() {
       details: [
         {
           text: "Technologies:",
-          icons: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare />],
+          icons: [<FaHtml5 key={"FaHtml5"} />, <FaCss3Alt key={"FaCss3Alt"} />, <FaJsSquare key={"FaJsSquare"} />],
         },
         { text: "Built my first full-stack applications 🚀" },
       ],
@@ -57,7 +57,7 @@ export default function Page() {
       details: [
         {
           text: "Technologies:",
-          icons: [<FaAngular />, <FaNodeJs />, <FaDatabase />, <SiMongodb />],
+          icons: [<FaAngular key={"FaAngular"} />, <FaNodeJs key={"FaNodeJs"} />, <FaDatabase key={"FaDatabase"} />, <SiMongodb key={"SiMongodb"} />],
         },
         { text: "Contributed to large-scale fleet management software 🚚" },
       ],
@@ -70,7 +70,7 @@ export default function Page() {
       details: [
         {
           text: "Technologies:",
-          icons: [<FaReact />, <SiNextdotjs />, <FaDatabase />, <SiMongodb />, <SiTailwindcss />, <SiPostgresql />],
+          icons: [<FaReact key={"FaReact"} />, <SiNextdotjs key={"SiNextdotjs"} />, <FaDatabase key={"FaDatabase"} />, <SiMongodb key={"SiMongodb"} />, <SiTailwindcss key={"SiTailwindcss"} />, <SiPostgresql key={"SiPostgresql"} />],
         },
         { text: "Optimized internal systems for business processes 📊" },
       ],
@@ -83,7 +83,7 @@ export default function Page() {
       details: [
         {
           text: "Technologies:",
-          icons: [<FaHtml5 />, <FaCss3Alt />, <FaJsSquare />, <SiTailwindcss />],
+          icons: [<FaHtml5 key={"FaHtml5"} />, <FaCss3Alt key={"FaCss3Alt"} />, <FaJsSquare key={"FaJsSquare"} />, <SiTailwindcss key={"SiTailwindcss"} />],
         },
         { text: "Developing scalable SaaS solutions for industrial automation ⚙️" },
       ],
