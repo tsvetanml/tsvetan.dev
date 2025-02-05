@@ -14,5 +14,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar")], // Asegúrate de que está bien escrito
+  plugins: [require("tailwind-scrollbar"), require("@tailwindcss/typography")], // Asegúrate de que está bien escrito
 } satisfies Config;
