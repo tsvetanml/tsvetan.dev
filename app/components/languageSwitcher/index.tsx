@@ -55,7 +55,7 @@ export default function LanguageSwitcher() {
       >
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center px-3 py-2 bg-blue-600 text-white rounded-md shadow-md border-2 border-blue-900 hover:bg-blue-700 transition"
+          className="flex items-center px-3 py-2 text-blue-600 rounded-md hover:shadow-md transition"
         >
           🌍 <span className="ml-2 text-sm font-semibold">{currentLocale.toUpperCase()}</span>
         </button>

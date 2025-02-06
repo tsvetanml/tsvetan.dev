@@ -16,20 +16,20 @@ export default function Welcome({ dict }: { dict: Dictionary }): JSX.Element {
     {
       type: NavigationItemType.LINK,
       href: '/timeline',
-      icon: <FaClock className="mb-1 mr-2" />,
+      icon: <FaClock className="mr-2" />,
       text: 'Timeline',
     },
     {
       type: NavigationItemType.LINK,
       href: '/projects',
-      icon: <FaFolderOpen className="mb-1 mr-2" />,
+      icon: <FaFolderOpen className="mr-2" />,
       text: 'Projects',
     },
     {
       type: NavigationItemType.LINK,
       external: true,
       href: 'https://github.com/tsvetanml',
-      icon: <AiOutlineGithub className="mb-1 mr-2" />,
+      icon: <AiOutlineGithub className="mr-2" />,
       text: 'GitHub',
     },
   ];
@@ -98,7 +98,7 @@ export default function Welcome({ dict }: { dict: Dictionary }): JSX.Element {
               transition={{ type: "spring", stiffness: 250, damping: 20 }} // Animación suave y natural
             >
               <Link
-                className="inline-flex items-center bg-blue-600 bg-opacity-80 text-white font-semibold justify-center backdrop-filter backdrop-blur-sm rounded-lg cursor-pointer px-8 py-2 border-2 border-blue-900 border-opacity-60"
+                className="inline-flex items-center  bg-opacity-80 text-blue-600 font-semibold justify-center backdrop-filter backdrop-blur-sm rounded-lg cursor-pointer px-8 py-2  border-opacity-60"
                 href={action.href}
                 target={action.external ? "_blank" : "_self"}
                 rel={action.external ? "noopener noreferrer" : ""}

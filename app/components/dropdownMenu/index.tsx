@@ -3,13 +3,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { FaBars, FaClock, FaFolderOpen, FaGithub, FaHome, FaLinkedin } from "react-icons/fa";
+import { FaBars, FaBlog, FaClock, FaFolderOpen, FaGithub, FaHome, FaLinkedin } from "react-icons/fa";
 
 // Opciones del menú definidas en una variable
 const menuItems = [
   { href: "/", label: "Home", icon: <FaHome className="w-4 h-4" /> },
   { href: "/projects", label: "Projects", icon: <FaFolderOpen className="w-4 h-4" /> },
   { href: "/timeline", label: "Timeline", icon: <FaClock className="w-4 h-4" /> },
+  { href: "/blog", label: "Blog", icon: <FaBlog className="w-4 h-4" /> },
 ];
 
 const socialLinks = [
@@ -65,12 +66,9 @@ const DropdownMenu = () => {
 
   return (
     <div ref={menuRef} className="absolute inline-block top-4 left-4 text-left z-10">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="p-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
-      >
-        <FaBars className="w-7 h-7" />
-      </button>
+
+      <FaBars onClick={() => setIsOpen(!isOpen)} className="w-10 h-10 p-2 cursor-pointer hover:shadow-lg rounded-md text-blue-500 transition duration-300" />
+
 
       <AnimatePresence>
         {isOpen && (
