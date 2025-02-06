@@ -31,21 +31,21 @@ export default function Blog() {
   posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6 text-blue-700">📚 Blog</h1>
-      <ul className="space-y-6">
+    <div className="max-w-4xl mx-auto p-8">
+      <h1 className="text-4xl font-extrabold mb-6 text-blue-700">Blog</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (
-          <li key={post.slug} className="border-l-4 border-blue-600 pl-4">
-            <Link href={`/blog/${post.slug}`}>
-              <h2 className="text-2xl text-blue-600 font-semibold hover:underline">
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
+            <div className="border-2 border-blue-900 border-opacity-60 p-6 rounded-lg bg-white shadow-md transition-transform transform group-hover:scale-105 group-hover:shadow-lg">
+              <h2 className="text-xl font-semibold text-blue-600 group-hover:underline">
                 {post.title}
               </h2>
-            </Link>
-            <p className="text-sm text-gray-500">{post.date}</p>
-            <p className="text-gray-700">{post.description}</p>
-          </li>
+              <p className="text-sm text-gray-500">{post.date}</p>
+              <p className="text-gray-700 mt-2">{post.description}</p>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
