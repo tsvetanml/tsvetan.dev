@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import AnimatedBackground from "../components/animatedBackground";
+import ClientWrapper from "../components/clientWrapper"; // 🔥 Importamos el wrapper
 import DropdownMenu from "../components/dropdownMenu";
 import LanguageSwitcher from "../components/languageSwitcher";
 import "../globals.css";
-
 
 export const metadata: Metadata = {
   title: "Tsvetan - Portfolio",
   description: "Personal portfolio of Tsvetan Mladenov, a full-stack developer specialized in modern web technologies.",
   keywords: ["Tsvetan Mladenov", "Fullstack Developer", "Web Developer", "Portfolio", "React", "Next.js"],
-  authors: { name: "Tsvetan Mladenov", url: " https://tsvetan.pro" },
+  authors: { name: "Tsvetan Mladenov", url: "https://tsvetan.pro" },
   metadataBase: new URL("https://tsvetan.pro"),
   openGraph: {
     title: "Tsvetan - Portfolio",
@@ -34,18 +34,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="antialiased bg-white relative overflow-hidden">
         <AnimatedBackground />
-        <div className="relative z-10">
-          <DropdownMenu />
-          <LanguageSwitcher />
-          {children}
-        </div>
-        {/* </div> */}
+        <ClientWrapper>
+          <div className="relative z-10">
+            <DropdownMenu />
+            <LanguageSwitcher />
+            {children}
+          </div>
+        </ClientWrapper>
       </body>
     </html>
   );
