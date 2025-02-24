@@ -7,6 +7,7 @@ interface Project {
   name: string;
   description: string;
   repo: string;
+  soon?: boolean;
 }
 
 const projects: Project[] = [
@@ -20,6 +21,12 @@ const projects: Project[] = [
     description: "Boilerplate para backend de plataformas SaaS con autenticación y pagos.",
     repo: "https://github.com/tsvetanml/saas-backend-template",
   },
+  {
+    name: "WhatShould I Watch",
+    description: "Aplicación para descubrir películas y series populares con la ayuda de la IA",
+    repo: "https://what2watchai-9r91xdm0h-tsvetanmls-projects.vercel.app",
+    soon: true,
+  }
 ];
 
 export default function Projects() {
